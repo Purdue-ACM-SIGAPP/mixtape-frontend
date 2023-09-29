@@ -1,13 +1,35 @@
+import * as React from "react";
+import { Button, TextInput, View } from "react-native";
 
-import * as React from 'react';
-import {View, Text, StyleSheet} from 'react-native'
+
 
 
 export default function LogIn() {
-    return(
-        <View>
-            <Text>LogIn Page</Text>
-        </View>
-    )
-}
 
+    const [phoneNum, onChangePhoneNum] = React.useState('Phone Number');
+    const [password, onChangePassword] = React.useState('Password');
+
+
+  return (
+    <>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <TextInput
+        value={phoneNum}></TextInput>
+        <TextInput
+        value={password}></TextInput>
+
+        <Button
+        title="Log In"
+        color="#19A7CE"
+      />
+        
+      </View>
+    </>
+  );
+}
