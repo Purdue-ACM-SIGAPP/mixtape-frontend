@@ -7,6 +7,7 @@ import {
   TextInput,
   View,
 } from "react-native";
+import Icon from "react-native-vector-icons/Feather";
 
 export default function LogIn() {
   const [phoneNum, setPhoneNum] = React.useState("");
@@ -22,28 +23,32 @@ export default function LogIn() {
           backgroundColor: "#14151E",
         }}
       >
-
         <Image
-        style={styles.mixtapeLogo}
-        source={{
-          uri: 'https://i.ibb.co/5xqB3BV/mixtape.png',
-        }} />
-
-
-        <TextInput
-          placeholder="&#128241; Phone Number"
-          value={phoneNum}
-          onChangeText={(text) => setPhoneNum(text)}
-          style={styles.textInput}
+          style={styles.mixtapeLogo}
+          source={{
+            uri: "https://i.ibb.co/5xqB3BV/mixtape.png",
+          }}
         />
-        
 
-        <TextInput
-          placeholder="&#128274; Password"
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          style={styles.textInput}
-        />
+        <View style={styles.inputContainer}>
+          <Icon name="phone" size={30} color="#C7C6C6" style={styles.icon} />
+          <TextInput
+            placeholder="Phone Number"
+            value={phoneNum}
+            onChangeText={(text) => setPhoneNum(text)}
+            style={styles.textInput}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Icon name="lock" size={30} color="#C7C6C6" style={styles.icon} />
+          <TextInput
+            placeholder="Password"
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            style={styles.textInput}
+          />
+        </View>
 
         <Pressable style={styles.loginButton}>
           <Text style={styles.loginText}>Log In</Text>
@@ -51,11 +56,13 @@ export default function LogIn() {
 
         <Text>
           <Pressable>
-            <Text style={[styles.textOptions, {marginRight: 100,}, ]}>Forgot Password?</Text>
+            <Text style={[styles.textOptions, { marginRight: 100 }]}>
+              Forgot Password?
+            </Text>
           </Pressable>
 
           <Pressable>
-            <Text style={[styles.textOptions, ]}>Create Account</Text>
+            <Text style={[styles.textOptions]}>Create Account</Text>
           </Pressable>
         </Text>
       </View>
@@ -82,23 +89,34 @@ const styles = StyleSheet.create({
     color: "white",
   },
   textInput: {
-    height: 40,
+    height: 30,
     width: 300,
-    borderColor: "#19A7CE",
-    borderWidth: 2.5,
-    marginTop: 20,
     backgroundColor: "#333333",
-    textAlign: "center",
+    textAlign: "left",
     color: "#C7C6C6",
   },
   textOptions: {
     color: "white",
     marginTop: 40,
-    textDecorationLine: 'underline',
+    textDecorationLine: "underline",
   },
   mixtapeLogo: {
     width: "250px",
     height: "150px",
     marginBottom: 20,
-  }
+  },
+  inputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#333333",
+    height: 40,
+    width: 300,
+    marginTop: 20,
+    marginBottom: 20,
+    borderColor: "#19A7CE",
+    borderWidth: 2.5,
+  },
+  icon: {
+    marginRight: 10,
+  },
 });
