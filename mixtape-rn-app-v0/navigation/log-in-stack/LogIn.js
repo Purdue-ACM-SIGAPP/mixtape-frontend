@@ -31,7 +31,7 @@ export default function LogIn() {
         />
 
         <View style={styles.inputContainer}>
-          <Icon name="phone" size={30} color="#C7C6C6" style={styles.icon} />
+          <Icon name="phone" size={20} color="#C7C6C6" style={styles.icon} />
           <TextInput
             placeholder="Phone Number"
             value={phoneNum}
@@ -41,12 +41,13 @@ export default function LogIn() {
         </View>
 
         <View style={styles.inputContainer}>
-          <Icon name="lock" size={30} color="#C7C6C6" style={styles.icon} />
+          <Icon name="lock" size={20} color="#C7C6C6" style={styles.icon} />
           <TextInput
             placeholder="Password"
             value={password}
             onChangeText={(text) => setPassword(text)}
             style={styles.textInput}
+            secureTextEntry={true}
           />
         </View>
 
@@ -118,5 +119,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 10,
+    paddingLeft: 5,
   },
 });
