@@ -14,8 +14,16 @@ export default function SignUp() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [isPasswordSecure, setIsPasswordSecure] = React.useState(true);
-  //https://stackoverflow.com/questions/72373360/adding-an-eye-icon-on-the-right-side-of-the-input-field-in-react-native
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
+  
+  const toggleShowPassword = () => { 
+    setShowPassword(!showPassword); 
+  };
+
+  const toggleShowConfirmPassword = () => { 
+    setShowConfirmPassword(!showConfirmPassword); 
+  }; 
 
   return (
     <>
@@ -27,12 +35,9 @@ export default function SignUp() {
           backgroundColor: "#14151E",
         }}
       >
-        <Image
-          style={styles.mixtapeLogo}
-          source={{
-            uri: "https://i.ibb.co/5xqB3BV/mixtape.png",
-          }}
-        />
+        <Text style={styles.signUpHeader}>
+          Sign Up
+        </Text>
 
         <View style={styles.inputContainer}>
           <Icon name="phone" size={20} color="#C7C6C6" style={styles.icon} />
@@ -61,9 +66,15 @@ export default function SignUp() {
             value={password}
             onChangeText={(text) => setPassword(text)}
             style={styles.textInput}
-            secureTextEntry={true}
+            secureTextEntry={!showPassword}
             
           />
+          {!showPassword && (
+            <Icon name="eye" size={20} color="#C7C6C6" style={styles.icon} onPress={toggleShowPassword}/>
+          )}
+          {showPassword && (
+            <Icon name="eye-off" size={20} color="#C7C6C6" style={styles.icon} onPress={toggleShowPassword}/>
+          )}
           
         </View>
 
@@ -74,9 +85,15 @@ export default function SignUp() {
             value={confirmPassword}
             onChangeText={(text) => setConfirmPassword(text)}
             style={styles.textInput}
-            secureTextEntry={true}
+            secureTextEntry={!showConfirmPassword}
             selectionColor={"#000000"}
           />
+          {!showConfirmPassword && (
+            <Icon name="eye" size={20} color="#C7C6C6" style={styles.icon} onPress={toggleShowConfirmPassword}/>
+          )}
+          {showConfirmPassword && (
+            <Icon name="eye-off" size={20} color="#C7C6C6" style={styles.icon} onPress={toggleShowConfirmPassword}/>
+          )}
         </View>
 
         <Pressable style={styles.loginButton}>
@@ -134,4 +151,9 @@ const styles = StyleSheet.create({
     marginRight: 10,
     paddingLeft: 5,
   },
+  signUpHeader: {
+    fontSize: 35,
+    paddingBottom: 20,
+    color: "#C7C6C6",
+  }
 });
