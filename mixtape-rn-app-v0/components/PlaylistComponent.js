@@ -1,55 +1,66 @@
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
-const PlaylistComponent = ({ name, image, contributors }) => {
-    //for testing purposes
-  name = "Playlist Name";
-  contributors = "p1,p2,p3,p4";
-  image = "https://i.ibb.co/5xqB3BV/mixtape.png"
-
+const PlaylistCard = ({ name, image, collaborators }) => {
+  if(!image) {
+    image = "https://i.ibb.co/5xqB3BV/mixtape.png"; //some default image? logo good?
+  }
+  if(!name){
+    name = "Name not found";
+  }
+  if(!collaborators){
+    collaborators = "Collaborators not found";
+  }
+  
   return (
-    <TouchableOpacity style={styles.button}>
-      <Image
-        source={{
-          uri: image,
-        }}
-        style={styles.playlistImage}
-      />
-      <Text style={styles.playlistText}>{name}</Text>
-      <Text style={styles.contributorsText}>{contributors}</Text>
-    </TouchableOpacity>
+    <Pressable>
+      <View style={styles.container}>
+        <View style={styles.imageContainer}>
+          <Image source={{ uri: image }} style={styles.image} />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.playlistName}>{name}</Text>
+          <Text style={styles.collabList}>{collaborators}</Text>
+        </View>
+      </View>
+    </Pressable>
   );
 };
 
-// The styles are customizable
 const styles = StyleSheet.create({
-  button: {
-    backgroundColor: "#00354D",
-    paddingVertical: 10,
-    paddingHorizontal: 50,
-    borderRadius: 7,
-    borderWidth: 3.5,
-    borderColor: "#146C94",
-    width: 367,
-    height: 107,
+  container: {
     flexDirection: "row",
+    backgroundColor: "#00354D",
+    padding: 10,
+    borderRadius: 7,
+    borderColor: "#146C94",
+    borderWidth: 3.5,
     alignItems: "center",
-    
+    marginBottom: 15,
+    width: "100%"
   },
-  playlistText: {
+  imageContainer: {
+    flex: 1,
+    marginRight: 10,
+    alignContent: "center",
+  },
+  image: {
+    width: 80,
+    height: 80,
+    borderRadius: 5,
+  },
+  textContainer: {
+    flex: 3,
+  },
+  playlistName: {
     color: "white",
-    fontSize: 18,
+    fontSize: 20,
   },
-  playlistImage : {
-    width: 70,
-    height: 70,
-    justifyContent: "left",
-  },
-  contributorsText: {
+  collabList: {
     color: "#E9E9E9",
     fontSize: 14,
-    textAlign: "center",
+    marginTop: 5,
   },
 });
 
-export default PlaylistComponent;
+export default PlaylistCard;
