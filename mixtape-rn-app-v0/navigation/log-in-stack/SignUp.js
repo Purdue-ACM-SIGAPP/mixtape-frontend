@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function SignUp() {
   const [phoneNum, setPhoneNum] = React.useState("");
@@ -16,6 +17,7 @@ export default function SignUp() {
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
+  const [isClicked, setIsClicked] = React.useState(false);
   
   const toggleShowPassword = () => { 
     setShowPassword(!showPassword); 
@@ -24,6 +26,21 @@ export default function SignUp() {
   const toggleShowConfirmPassword = () => { 
     setShowConfirmPassword(!showConfirmPassword); 
   }; 
+
+  const isValidPhoneNumber = (phoneNumber) => {
+    const phonePattern = /^\d{10}$/;
+    return phonePattern.test(phoneNumber);
+  };
+
+  const handleSendVerificationCode = () => {
+    setIsClicked(true);
+    if (isValidPhoneNumber(phoneNum)) {
+      // Your logic for sending the verification code
+      console.log('Sending verification code...');
+    } else {
+      console.log('Please enter a valid 10-digit phone number.');
+    }
+  };
 
   return (
     <>
@@ -48,6 +65,9 @@ export default function SignUp() {
             style={styles.textInput}
           />
         </View>
+        {isClicked && !isValidPhoneNumber(phoneNum) && (
+          <Text style={styles.errorText}>Please enter a valid 10-digit phone number.</Text>
+        )}
 
         <View style={styles.inputContainer}>
           <Icon name="user" size={20} color="#C7C6C6" style={styles.icon} />
@@ -79,7 +99,7 @@ export default function SignUp() {
         </View>
 
         <View style={styles.inputContainer}>
-          <Icon name="lock" size={20} color="#C7C6C6" style={styles.icon} />
+          <MaterialCommunityIcons name="lock-check-outline" size={22} color="#C7C6C6" style={styles.icon}/>
           <TextInput
             placeholder="Confirm Password"
             value={confirmPassword}
@@ -96,7 +116,7 @@ export default function SignUp() {
           )}
         </View>
 
-        <Pressable style={styles.loginButton}>
+        <Pressable style={styles.loginButton} onPress={handleSendVerificationCode}>
           <Text style={styles.loginText}>Send Verification Code</Text>
         </Pressable>
       </View>
@@ -118,7 +138,6 @@ const styles = StyleSheet.create({
   loginText: {
     fontSize: 16,
     lineHeight: 21,
-    //fontWeight: "bold",
     letterSpacing: 0.25,
     color: "white",
   },
@@ -155,5 +174,9 @@ const styles = StyleSheet.create({
     fontSize: 35,
     paddingBottom: 20,
     color: "#C7C6C6",
-  }
+  },
+  errorText: {
+    color: 'red',
+    paddingBottom: 3,
+  },
 });
