@@ -18,6 +18,7 @@ export default function SignUp() {
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
   const [isClicked, setIsClicked] = React.useState(false);
+  const [checkPassword, setCheckPassword] = React.useState(false);
   
   const toggleShowPassword = () => { 
     setShowPassword(!showPassword); 
@@ -39,6 +40,12 @@ export default function SignUp() {
       console.log('Sending verification code...');
     } else {
       console.log('Please enter a valid 10-digit phone number.');
+    }
+    if (password != confirmPassword) {
+      setCheckPassword(true);
+    }
+    else {
+      setCheckPassword(false);
     }
   };
 
@@ -63,6 +70,7 @@ export default function SignUp() {
             value={phoneNum}
             onChangeText={(text) => setPhoneNum(text)}
             style={styles.textInput}
+            maxLength={10}
           />
         </View>
         {isClicked && !isValidPhoneNumber(phoneNum) && (
@@ -115,6 +123,9 @@ export default function SignUp() {
             <Icon name="eye-off" size={20} color="#C7C6C6" style={styles.icon} onPress={toggleShowConfirmPassword}/>
           )}
         </View>
+        {isClicked && checkPassword && (
+          <Text style={styles.errorText}>Passwords must be the same</Text>
+        )}
 
         <Pressable style={styles.loginButton} onPress={handleSendVerificationCode}>
           <Text style={styles.loginText}>Send Verification Code</Text>
