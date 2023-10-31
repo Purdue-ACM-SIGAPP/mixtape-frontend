@@ -19,6 +19,7 @@ export default function SignUp() {
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
   const [isClicked, setIsClicked] = React.useState(false);
   const [checkPassword, setCheckPassword] = React.useState(false);
+  const [checkPhone, setCheckPhone] = React.useState(false);
   
   const toggleShowPassword = () => { 
     setShowPassword(!showPassword); 
@@ -36,10 +37,9 @@ export default function SignUp() {
   const handleSendVerificationCode = () => {
     setIsClicked(true);
     if (isValidPhoneNumber(phoneNum)) {
-      // Your logic for sending the verification code
-      console.log('Sending verification code...');
+      setCheckPhone(false);
     } else {
-      console.log('Please enter a valid 10-digit phone number.');
+      setCheckPhone(true);
     }
     if (password != confirmPassword) {
       setCheckPassword(true);
@@ -73,7 +73,7 @@ export default function SignUp() {
             maxLength={10}
           />
         </View>
-        {isClicked && !isValidPhoneNumber(phoneNum) && (
+        {isClicked && checkPhone && (
           <Text style={styles.errorText}>Please enter a valid 10-digit phone number.</Text>
         )}
 
