@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, Pressable } from "react-native";
 
 // Reusable submit button component
 // initialText: Text to display when the button is first rendered
@@ -16,9 +16,9 @@ const SubmitButton = ({ initialText, updatedText, onPress }) => {
   };
 
   return (
-    <TouchableOpacity style={styles.button} onPress={handlePress}>
+    <Pressable style={styles.button} onPress={handlePress}>
       <Text style={styles.buttonText}>{buttonText}</Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
