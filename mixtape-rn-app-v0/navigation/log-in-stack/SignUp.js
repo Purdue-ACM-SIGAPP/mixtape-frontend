@@ -20,6 +20,8 @@ export default function SignUp() {
   const [isClicked, setIsClicked] = React.useState(false);
   const [checkPassword, setCheckPassword] = React.useState(false);
   const [checkPhone, setCheckPhone] = React.useState(false);
+  const [checkUsernameBlank, setCheckUsernameBlank] = React.useState(false);
+  const [checkPasswordBlank, setCheckPasswordBlank] = React.useState(false);
   
   const toggleShowPassword = () => { 
     setShowPassword(!showPassword); 
@@ -36,6 +38,18 @@ export default function SignUp() {
 
   const handleSendVerificationCode = () => {
     setIsClicked(true);
+    if (username == "") {
+      setCheckUsernameBlank(true);
+    }
+    else {
+      setCheckUsernameBlank(false);
+    }
+    if (password == "") {
+      setCheckPasswordBlank(true);
+    }
+    else {
+      setCheckPasswordBlank(false);
+    }
     if (isValidPhoneNumber(phoneNum)) {
       setCheckPhone(false);
     } else {
@@ -86,6 +100,9 @@ export default function SignUp() {
             style={styles.textInput}
           />
         </View>
+        {isClicked && checkUsernameBlank && (
+          <Text style={styles.errorText}>Please enter a valid username</Text>
+        )}
 
         <View style={styles.inputContainer}>
           <Icon name="lock" size={20} color="#C7C6C6" style={styles.icon} />
@@ -105,6 +122,9 @@ export default function SignUp() {
           )}
           
         </View>
+        {isClicked && checkPasswordBlank && (
+          <Text style={styles.errorText}>Please enter a valid password</Text>
+        )}
 
         <View style={styles.inputContainer}>
           <MaterialCommunityIcons name="lock-check-outline" size={22} color="#C7C6C6" style={styles.icon}/>
