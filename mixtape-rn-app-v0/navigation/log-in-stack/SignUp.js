@@ -36,6 +36,11 @@ export default function SignUp() {
     return phonePattern.test(phoneNumber);
   };
 
+  const isValidPassword = (password) => {
+    const phonePattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return phonePattern.test(password);
+  };
+
   const handleSendVerificationCode = () => {
     setIsClicked(true);
     if (username == "") {
@@ -44,7 +49,7 @@ export default function SignUp() {
     else {
       setCheckUsernameBlank(false);
     }
-    if (password == "") {
+    if (!isValidPassword(password)) {
       setCheckPasswordBlank(true);
     }
     else {
@@ -123,7 +128,7 @@ export default function SignUp() {
           
         </View>
         {isClicked && checkPasswordBlank && (
-          <Text style={styles.errorText}>Please enter a valid password</Text>
+          <Text style={styles.errorText}>Your password should a contain min of 8 characters, at least one uppercase and lowecase letter, one number, and one special character.</Text>
         )}
 
         <View style={styles.inputContainer}>
@@ -209,5 +214,6 @@ const styles = StyleSheet.create({
   errorText: {
     color: 'red',
     paddingBottom: 3,
+    width: 300,
   },
 });
