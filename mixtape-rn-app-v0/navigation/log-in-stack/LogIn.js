@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#333333",
     textAlign: "left",
     color: "#C7C6C6",
+    flex: 1,
   },
 
   mixtapeLogo: {
