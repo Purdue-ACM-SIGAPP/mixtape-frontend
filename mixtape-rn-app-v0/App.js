@@ -6,7 +6,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import LogIn from './navigation/log-in-stack/LogIn';
 import Home from './navigation/main-stack/Home';
-import AfterCreateAcc from './navigation/log-in-stack/AfterCreateAcc';
 
 
 
@@ -16,15 +15,11 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator
-      initialRouteName = {"AfterCreateAcc"}
-      screenOptions = {
-        {headerShown: false}
-      }>
-      <Stack.Screen name = "AfterCreateAcc" component = {AfterCreateAcc} />
-      <Stack.Screen name = "LogIn" component = {LogIn} />
-      <Stack.Screen name = "Home" component = {Home} />
-      </Stack.Navigator>
+    <Stack.Navigator>
+    <Stack.Screen name="LogIn" component={LogIn} />
+
+    <Stack.Screen name="Home" component={Home} />
+    </Stack.Navigator>
     </NavigationContainer>
   );
 
