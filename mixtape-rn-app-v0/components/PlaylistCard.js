@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 7,
     borderColor: "#146C94",
-    borderWidth: 3.5,
+    borderWidth: 3,
     alignItems: "center",
     marginBottom: 15,
     width: "100%"
@@ -43,10 +43,13 @@ const styles = StyleSheet.create({
     flex: 1,
     marginRight: 10,
     alignContent: "center",
-  },
-  image: {
     width: 80,
     height: 80,
+    marginTop: 10,
+  },
+  image: {
+    width: "100%",
+    height: "100%",
     borderRadius: 5,
     resizeMode: "cover",
   },
