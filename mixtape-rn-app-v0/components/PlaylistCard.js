@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 5,
+    resizeMode: "cover",
   },
   textContainer: {
     flex: 3,
