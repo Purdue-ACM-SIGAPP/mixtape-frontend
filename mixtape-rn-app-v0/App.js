@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import LogIn from './navigation/log-in-stack/LogIn';
 import Home from './navigation/main-stack/Home';
+import ForgotPassword from './navigation/log-in-stack/ForgotPassword';
 
 
 
@@ -17,8 +18,10 @@ export default function App() {
     <NavigationContainer>
     <Stack.Navigator>
     
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="LogIn" component={LogIn} />
+
     </Stack.Navigator>
     </NavigationContainer>
   );
