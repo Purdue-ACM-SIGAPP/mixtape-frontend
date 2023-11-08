@@ -29,10 +29,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 50,
     borderRadius: 7,
+    maxWidth: 200
+    
   },
   buttonText: {
     color: "white",
     fontSize: 18,
+    textAlign: "center"
+
   },
 });
 
