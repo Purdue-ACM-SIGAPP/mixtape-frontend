@@ -11,84 +11,83 @@ import Icon from "react-native-vector-icons/Feather";
 import SubmitButton from "../../components/SubmitButton";
 import Link from "../../components/Link";
 
-export default function LogIn({navigation}) {
+export default function LogIn({ navigation }) {
   const [phoneNum, setPhoneNum] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const LogInPressed = ()=> {
+  const LogInPressed = () => {
     if (isValidPhoneNumber(phoneNum)) {
-    console.log("Log In pressed");
-    navigation.navigate("Home");
+      console.log("Log In pressed");
+      navigation.navigate("Home");
     } else {
-      console.log('Please enter a valid 10-digit phone number.');
-  }
-}
-  const forgotPasswordPressed = ()=> {
+      console.log("Please enter a valid 10-digit phone number.");
+    }
+  };
+  const forgotPasswordPressed = () => {
     console.log("Forgot Password pressed");
-  }
+  };
 
-  const createAccountPressed = ()=> {
+  const createAccountPressed = () => {
     console.log("Create Account pressed");
-  }
+  };
   const isValidPhoneNumber = (phoneNumber) => {
     const phonePattern = /^\d{10}$/;
     return phonePattern.test(phoneNumber);
   };
 
-  
-
   return (
+    <View style={styles.page}>
+      <Image
+        style={styles.mixtapeLogo}
+        source={{
+          uri: "https://i.ibb.co/5xqB3BV/mixtape.png",
+        }}
+      />
 
-      <View
-        style={styles.page}
-      >
-        <Image
-          style={styles.mixtapeLogo}
-          source={{
-            uri: "https://i.ibb.co/5xqB3BV/mixtape.png",
-          }}
+      <View style={styles.inputContainer}>
+        <Icon name="phone" size={20} color="#C7C6C6" style={styles.icon} />
+        <TextInput
+          placeholder={"Phone Number"}
+          value={phoneNum}
+          onChangeText={(text) => setPhoneNum(text)}
+          style={styles.textInput}
         />
-
-        <View style={styles.inputContainer}>
-          <Icon name="phone" size={20} color="#C7C6C6" style={styles.icon} />
-          <TextInput
-            placeholder= {"Phone Number"}
-            value={phoneNum}
-            onChangeText={(text) => setPhoneNum(text)}
-            style={styles.textInput}
-          />
-        </View>
-
-        <View style={styles.inputContainer}>
-          <Icon name="lock" size={20} color="#C7C6C6" style={styles.icon} />
-          <TextInput
-            placeholder="Password"
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-            style={styles.textInput}
-            secureTextEntry={true}
-          />
-        </View>
-
-
-        <SubmitButton initialText={"Log In"} updatedText = "Log In" onPress={()=> LogInPressed()}/>
-
-        <View style = {styles.LinkHolder}>
-          <Link linkText="Forgot Password?" onPress = {()=> forgotPasswordPressed()}/>
-          <Link linkText="Create Account" onPress={()=> createAccountPressed()}/>
-
-          
-        </View>
       </View>
 
+      <View style={styles.inputContainer}>
+        <Icon name="lock" size={20} color="#C7C6C6" style={styles.icon} />
+        <TextInput
+          placeholder="Password"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          style={styles.textInput}
+          secureTextEntry={true}
+        />
+      </View>
+
+      <SubmitButton
+        initialText={"Log In"}
+        updatedText="Log In"
+        onPress={() => LogInPressed()}
+      />
+
+      <View style={styles.LinkHolder}>
+        <Link
+          linkText="Forgot Password?"
+          onPress={() => forgotPasswordPressed()}
+        />
+        <Link
+          linkText="Create Account"
+          onPress={() => createAccountPressed()}
+        />
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-
   LinkHolder: {
-
-    flexDirection:"row",
+    flexDirection: "row",
     justifyContent: "center",
   },
   loginButton: {
@@ -114,6 +113,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#333333",
     textAlign: "left",
     color: "#C7C6C6",
+    flex: 1,
   },
 
   mixtapeLogo: {
@@ -141,5 +141,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#14151E",
-  }
+  },
 });
