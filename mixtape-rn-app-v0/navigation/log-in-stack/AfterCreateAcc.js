@@ -2,24 +2,35 @@ import * as React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import { dancing_meme } from '../../assets';
 import SubmitButton from '../../components/SubmitButton';
+import {Dimensions } from 'react-native';
+import { useEffect, useState } from 'react';
 
 
 export default function AfterCreateAcc() {
+    const [screenWidth, setScreenWidth] = useState(Dimensions.get('window').width);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      setScreenWidth(Dimensions.get('window').width);
+    };
+
+    Dimensions.addEventListener('change', updateWidth);
+
+    return () => {
+      Dimensions.removeEventListener('change', updateWidth);
+    };
+  }, []);
     return(
         <View style = {styles.container}>
             <View style = {styles.leftcontainer}>
                 <Text style = {styles.HeaderText}> The party is almost ready!</Text>
                 <Text style = {styles.SubHeader}> Next, connect your account with a music streaming service.</Text>
-                <SubmitButton initialText={"Next"} updatedText = "Next" onPress={()=> {}}/>
-            </View>
-            <View style = {styles.rightcontainer}>
-            <img
+                <img
                 src={dancing_meme}
                 style = {styles.DImage}
                 />
-            <Text style = {styles.Description}>It has been shown that Memes make the Generation Z demograph laugh.</Text>
-            </View>
-            
+                <SubmitButton initialText={"Next"} updatedText = "Next" onPress={()=> {}}/>
+                </View>            
             
         </View>
     )
@@ -36,11 +47,12 @@ const styles = StyleSheet.create({
         fontFamily: "Inter",
     },
     leftcontainer: {
-        flex: 7, // 70% of the available space (7 out of 10 total units)
+        //flex: 1, // 70% of the available space (7 out of 10 total units)
         flexDirection: 'column',
-        alignItems: 'left',
+        alignItems: 'center',
         backgroundColor: "#14151E",
         height: '100%',
+        width: '100%',
         paddingLeft:50,
         minWidth: 400,
     },
@@ -57,39 +69,39 @@ const styles = StyleSheet.create({
     },
     
     HeaderText:{
-        marginTop: '10%',
+        marginTop: 100,
         fontSize: 40, 
         paddingBottom: 25, 
         fontWeight: 'bold', 
         flexWrap: 'wrap', 
-        textAlign: 'left', 
+        textAlign: 'center', 
         maxWidth: '80%',
         minWidth: 300,
         color: '#FFFFFF',
-        alignSelf: 'flex-start' 
+        //alignSelf: 'flex-start' 
     },
     DImage:{
-        marginTop: '10%',
+        //marginTop: '10%',
         paddingBottom: 25, 
         fontWeight: 'bold', 
         flexWrap: 'wrap', 
         maxWidth: '80%',
         color: '#FFFFFF',
         marginRight: 10, // Reduce the paddingRight value
-        width: 400,
-        height: 400,
+        width: 200,
+        height: 200,
         resizeMode: "contain"
     },
     SubHeader: {
         fontSize:24,
         color: '#D1D1D1',
-        textAlign: 'left',
-        alignSelf: 'flex-start', 
+        textAlign: 'center',
+       // alignSelf: 'flex-start', 
         paddingBottom: '10%'
     },
     Description: {
         fontSize:16,
         color: '#A1A1A1',
-        textAlign: 'left'
+        textAlign: 'center'
     }
 });
