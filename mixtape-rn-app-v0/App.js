@@ -3,9 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { NativeWindStyleSheet } from 'nativewind';
 
-import LogIn from './navigation/log-in-stack/LogIn';
-import Home from './navigation/main-stack/Home';
+
 import AfterCreateAcc from './navigation/log-in-stack/AfterCreateAcc';
 
 import LogIn from "./navigation/log-in-stack/LogIn";

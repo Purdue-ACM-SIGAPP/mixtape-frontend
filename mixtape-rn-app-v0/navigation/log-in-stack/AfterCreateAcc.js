@@ -29,6 +29,7 @@ export default function AfterCreateAcc() {
                 src={dancing_meme}
                 style = {styles.DImage}
                 />
+                <Text style = {styles.Description}> It has been shown that memes make Generation Z something laugh increase</Text>
                 <SubmitButton initialText={"Next"} updatedText = "Next" onPress={()=> {}}/>
                 </View>            
             
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#14151E",
         height: '100%',
         width: '100%',
-        paddingLeft:50,
+        //paddingLeft:50,
         minWidth: 400,
     },
     rightcontainer: {
@@ -82,14 +83,14 @@ const styles = StyleSheet.create({
     },
     DImage:{
         //marginTop: '10%',
-        paddingBottom: 25, 
+        paddingBottom: 10, 
         fontWeight: 'bold', 
-        flexWrap: 'wrap', 
-        maxWidth: '80%',
+        //flexWrap: 'wrap', 
+        //maxWidth: '80%',
         color: '#FFFFFF',
-        marginRight: 10, // Reduce the paddingRight value
-        width: 200,
-        height: 200,
+        //marginRight: 10, // Reduce the paddingRight value
+        width: 300,
+        height: 300,
         resizeMode: "contain"
     },
     SubHeader: {
@@ -97,11 +98,13 @@ const styles = StyleSheet.create({
         color: '#D1D1D1',
         textAlign: 'center',
        // alignSelf: 'flex-start', 
-        paddingBottom: '10%'
+        paddingBottom: 30,
+        paddingTop: 0,
     },
     Description: {
         fontSize:16,
         color: '#A1A1A1',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom: 25,
     }
 });
