@@ -25,18 +25,22 @@ const SubmitButton = ({ initialText, updatedText, onPress }) => {
   );
 };
 
-// Stylesheet if not using TailwindCSS
-// const styles = StyleSheet.create({
-//   button: {
-//     backgroundColor: "#19A7CE",
-//     paddingVertical: 10,
-//     paddingHorizontal: 50,
-//     borderRadius: 7,
-//   },
-//   buttonText: {
-//     color: "white",
-//     fontSize: 18,
-//   },
-// });
+// The styles are customizable
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: "#19A7CE",
+    paddingVertical: 10,
+    paddingHorizontal: 50,
+    borderRadius: 7,
+    maxWidth: 200
+
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 18,
+    textAlign: "center"
+
+  },
+});
 
 export default SubmitButton;
