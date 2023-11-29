@@ -1,3 +1,4 @@
+
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -7,6 +8,7 @@ import { NativeWindStyleSheet } from "nativewind";
 
 import LogIn from "./navigation/log-in-stack/LogIn";
 import Home from "./navigation/main-stack/Home";
+import ForgotPassword from './navigation/log-in-stack/ForgotPassword';
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -17,11 +19,13 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="LogIn" component={LogIn} />
+    <Stack.Navigator>
+    
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="LogIn" component={LogIn} />
 
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator>
+    </Stack.Navigator>
     </NavigationContainer>
   );
 }
