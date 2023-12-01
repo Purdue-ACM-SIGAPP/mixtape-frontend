@@ -6,6 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NativeWindStyleSheet } from "nativewind";
 
 import LogIn from "./navigation/log-in-stack/LogIn";
+import ConnectMusicAccount from "./navigation/log-in-stack/ConnectMusicAccount";
 import Home from "./navigation/main-stack/Home";
 
 NativeWindStyleSheet.setOutput({
@@ -18,8 +19,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="ConnectMusicAccount" component={ConnectMusicAccount} />
         <Stack.Screen name="LogIn" component={LogIn} />
-
         <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
