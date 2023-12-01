@@ -10,6 +10,7 @@ import AfterCreateAcc from './navigation/log-in-stack/AfterCreateAcc';
 import LogIn from "./navigation/log-in-stack/LogIn";
 import Home from "./navigation/main-stack/Home";
 import ForgotPassword from './navigation/log-in-stack/ForgotPassword';
+import Friends from './navigation/main-stack/Friends';
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -21,6 +22,7 @@ export default function App() {
   return (
     <NavigationContainer>
     <Stack.Navigator>
+    <Stack.Screen name="Friends" component={Friends} />  
       <Stack.Screen name="AfterCreateAcc" component={AfterCreateAcc} />    
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="Home" component={Home} />
