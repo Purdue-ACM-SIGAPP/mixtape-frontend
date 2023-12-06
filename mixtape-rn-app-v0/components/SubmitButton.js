@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, Pressable } from "react-native";
 
 // Reusable submit button component
 // initialText: Text to display when the button is first rendered
@@ -16,9 +16,12 @@ const SubmitButton = ({ initialText, updatedText, onPress }) => {
   };
 
   return (
-    <TouchableOpacity style={styles.button} onPress={handlePress}>
-      <Text style={styles.buttonText}>{buttonText}</Text>
-    </TouchableOpacity>
+    <Pressable
+      className="bg-secondary py-[10px] px-[50px] rounded-[7px]"
+      onPress={handlePress}
+    >
+      <Text className="text-ivory text-[18px]">{buttonText}</Text>
+    </Pressable>
   );
 };
 
@@ -29,10 +32,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 50,
     borderRadius: 7,
+    maxWidth: 200
+
   },
   buttonText: {
     color: "white",
     fontSize: 18,
+    textAlign: "center"
+
   },
 });
 
