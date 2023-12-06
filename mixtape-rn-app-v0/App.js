@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NativeWindStyleSheet } from 'nativewind';
-
+import Verification from './navigation/log-in-stack/Verification';
 import AfterCreateAcc from './navigation/log-in-stack/AfterCreateAcc';
 import LogIn from "./navigation/log-in-stack/LogIn";
 import SignUp from "./navigation/log-in-stack/SignUp";
@@ -21,6 +21,7 @@ export default function App() {
   return (
     <NavigationContainer>
     <Stack.Navigator>
+      <Stack.Screen name="Verification" component={Verification} />
       <Stack.Screen name="LogIn" component={LogIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="AfterCreateAcc" component={AfterCreateAcc} />    
