@@ -9,8 +9,9 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import BackButton from "../../components/BackButton";
 
-export default function SignUp() {
+export default function SignUp({ navigation }) {
   const [phoneNum, setPhoneNum] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -66,6 +67,7 @@ export default function SignUp() {
     else {
       setCheckPassword(false);
     }
+    navigation.navigate("Verification");
   };
 
   return (
@@ -78,6 +80,7 @@ export default function SignUp() {
           backgroundColor: "#14151E",
         }}
       >
+      <BackButton onPress={() => navigation.goBack()}/>
         <Text style={styles.signUpHeader}>
           Sign Up
         </Text>

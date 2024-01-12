@@ -25,10 +25,12 @@ export default function LogIn({ navigation }) {
   };
   const forgotPasswordPressed = () => {
     console.log("Forgot Password pressed");
+    navigation.navigate("ForgotPassword");
   };
 
   const createAccountPressed = () => {
     console.log("Create Account pressed");
+    navigation.navigate("SignUp");
   };
   const isValidPhoneNumber = (phoneNumber) => {
     const phonePattern = /^\d{10}$/;
