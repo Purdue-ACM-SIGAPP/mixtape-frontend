@@ -9,7 +9,8 @@ import AfterCreateAcc from './navigation/log-in-stack/AfterCreateAcc';
 import LogIn from "./navigation/log-in-stack/LogIn";
 import SignUp from "./navigation/log-in-stack/SignUp";
 import Home from "./navigation/main-stack/Home";
-import ForgotPassword from './navigation/log-in-stack/ForgotPassword';
+import ForgotPassword from "./navigation/log-in-stack/ForgotPassword";
+import LinkAccount from "./navigation/log-in-stack/LinkAccount";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -21,6 +22,7 @@ export default function App() {
   return (
     <NavigationContainer>
     <Stack.Navigator>
+      <Stack.Screen name="LinkAccount" component={LinkAccount} />
       <Stack.Screen name="LogIn" component={LogIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="AfterCreateAcc" component={AfterCreateAcc} />    
