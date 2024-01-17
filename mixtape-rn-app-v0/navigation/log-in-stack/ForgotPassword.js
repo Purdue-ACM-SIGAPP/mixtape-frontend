@@ -10,8 +10,9 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import SubmitButton from "../../components/SubmitButton";
+import BackButton from "../../components/BackButton";
 
-export default function ForgotPassword() {
+export default function ForgotPassword({ navigation }) {
   const [phoneNum, setPhoneNum] = React.useState("");
   const [isClicked, setIsClicked] = React.useState(false);
   const [checkPhone, setCheckPhone] = React.useState(true);
@@ -51,6 +52,7 @@ export default function ForgotPassword() {
           backgroundColor: "#14151E",
         }}
       >
+      <BackButton onPress={() => navigation.goBack()}/>
         
         <Text style={styles.ForgotPassword}>Reset Password</Text>
         <View>
