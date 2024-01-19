@@ -15,12 +15,14 @@ export const ImageButton = ({ imageName, onPress, imageText }) => {
 
   return (
     <Pressable onPress={handlePress}>
-      <View className="items-center">
+      <View className="justify-center items-center mb-2 mr-10 ml-10 w-full h-full">
         <Image
-          className="w-[180px] h-[180px] mb-2 mr-10 ml-10"
+          className="xs:w-[120px] xs:h-[120px] sm:w-[180px] sm:h-[180px]"
           source={imageName}
         />
-        <Text className="text-white text-[20px] text-center">{imageText}</Text>
+        <Text className="text-white mt-2 text-[20px] text-center">
+          {imageText}
+        </Text>
       </View>
     </Pressable>
   );
