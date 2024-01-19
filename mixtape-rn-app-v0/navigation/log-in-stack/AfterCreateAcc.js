@@ -29,7 +29,7 @@ export default function AfterCreateAcc() {
                 src={dancing_meme}
                 style = {styles.DImage}
                 />
-                <Text style = {styles.Description}> It has been shown that memes make Generation Z something laugh increase</Text>
+                <Text style = {styles.Description}> It has been shown that memes make Generation Z demographic laugh.</Text>
                 <SubmitButton initialText={"Next"} updatedText = "Next" onPress={()=> {}}/>
                 </View>            
             
@@ -55,29 +55,17 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         //paddingLeft:50,
-        minWidth: 400,
-    },
-    rightcontainer: {
-        flex: 3, // 30% of the available space (3 out of 10 total units)
-        minWidth: 600,
-        flexDirection: 'column',
-        alignItems: 'center',
-        backgroundColor: "#14151E",
-        //backgroundColor: "#14381E",
-        fontFamily: "Inter",
-        height: '100%',
-        
+        //minWidth: 400,
     },
     
     HeaderText:{
-        marginTop: 100,
-        fontSize: 40, 
-        paddingBottom: 25, 
-        fontWeight: 'bold', 
+        marginTop: 60,
+        fontSize: 35, 
+        paddingBottom: 25,  
         flexWrap: 'wrap', 
         textAlign: 'center', 
         maxWidth: '80%',
-        minWidth: 300,
+        //minWidth: 300,
         color: '#FFFFFF',
         //alignSelf: 'flex-start' 
     },
@@ -89,20 +77,24 @@ const styles = StyleSheet.create({
         //maxWidth: '80%',
         color: '#FFFFFF',
         //marginRight: 10, // Reduce the paddingRight value
-        width: 300,
-        height: 300,
-        resizeMode: "contain"
+        maxWidth: 300,
+        maxHeight: 300,
+        width: '50%',
+        resizeMode: "contain",
+
     },
     SubHeader: {
-        fontSize:24,
+        fontSize:15,
         color: '#D1D1D1',
         textAlign: 'center',
-       // alignSelf: 'flex-start', 
+       // alignSelf: 'flex-start',
+        wordWrap: 'break-word', /* For browsers supporting non-standard property */
+        overflowWrap: 'break-word', 
         paddingBottom: 30,
         paddingTop: 0,
     },
     Description: {
-        fontSize:16,
+        fontSize:12,
         color: '#A1A1A1',
         textAlign: 'center',
         marginBottom: 25,
