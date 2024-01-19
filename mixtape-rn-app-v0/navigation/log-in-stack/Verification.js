@@ -10,18 +10,23 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import SubmitButton from "../../components/SubmitButton";
+import BackButton from "../../components/BackButton";
 import { TouchableOpacity, Linking } from 'react-native';
 
 
-export default function Verification() {
+export default function Verification({ navigation }) {
   const [isClicked, setIsClicked] = React.useState(false);
   const [checkValid, setCheckValid] = React.useState(true);
   const [code, setCode] = React.useState("");
 
   const backToLogin = () => {
     return (
+      
       // need to go back to login page
-      console.log("pressed back")
+      navigation.goBack()
+      //navigation.navigate('SignUp')
+      //console.log("pressed back")
+      
     );
   }
 
@@ -31,6 +36,7 @@ export default function Verification() {
       console.log("pressed back");
     };
   const VerificationCode = (code) => {
+    navigation.navigate("AfterCreateAcc");
     return false;
   };
   
@@ -73,7 +79,8 @@ export default function Verification() {
         <View style={styles.addSpacing}></View>
 
         <SubmitButton initialText="Submit" updatedText="Submit" onPress={() => VerificationCode(code)}/>
-        <Text style={[styles.SubheaderBottom, styles.underline]} onPress={tryAgain}>Back to Sign Up</Text>
+        <BackButton onPress={() => navigation.goBack()}/>
+        <Text style={[styles.SubheaderBottom, styles.underline]} onPress={backToLogin}>Back to Sign Up</Text>
       </View>
     </>
   );
