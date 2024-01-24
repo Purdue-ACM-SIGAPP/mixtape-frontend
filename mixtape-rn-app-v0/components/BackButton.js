@@ -9,14 +9,14 @@ const BackButton = ({ onPress }) => {
   };
 
   return (
-    <Pressable className="px-[20%]" onPress={handlePress}>
-        <View className="items-center">
-        <Image
-          className="w-[60px] h-[60px] mb-2 mr-10 ml-10"
-          source={BackSprite}
-        />
-      </View>
-    </Pressable>
+    <Pressable className="absolute top-0 left-0 p-4 z-10" onPress={handlePress}>
+  <View className="items-center">
+    <Image
+      className="w-8 h-8 mb-2"
+      source={BackSprite}
+    />
+  </View>
+</Pressable>
   );
 };
 
