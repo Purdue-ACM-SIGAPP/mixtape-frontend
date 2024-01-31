@@ -33,14 +33,14 @@ export default function ConnectSpotify({ navigation }) {
   return (
     <View style={styles.page}>
 
-    { platform == "spotify" ? (
+    { platform.toLowerCase() == "spotify" ? (
         <> 
         <View>
             <Image
                 style={styles.platformImg}
-                source={{
-                    uri: "https://i.ibb.co/5xqB3BV/mixtape.png",
-                }}
+                source={
+                  require('../../assets/spotify.png')
+                }
             />
         </View>
         <View>
@@ -54,9 +54,9 @@ export default function ConnectSpotify({ navigation }) {
             <> 
                 <Image
                     style={styles.platformImg}
-                    source={{
-                        uri: "https://i.ibb.co/5xqB3BV/mixtape.png",
-                    }}
+                    source={
+                      require('../../assets/applemusic.png')
+                    }
                 />
                 <Text style={styles.loginText}>
                     Login to your Apple Music Account
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   platformImg: {
-    width: "250px",
+    width: "150px",
     height: "150px",
     marginBottom: 20,
   },

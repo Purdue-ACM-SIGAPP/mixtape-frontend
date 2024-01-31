@@ -23,6 +23,7 @@ export default function App() {
   return (
     <NavigationContainer>
     <Stack.Navigator>
+      <Stack.Screen name="ConnectMusicAccount" component={ConnectMusicAccount} />
       <Stack.Screen name="LinkAccount" component={LinkAccount} />
       <Stack.Screen name="LogIn" component={LogIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
