@@ -7,9 +7,11 @@ import { NativeWindStyleSheet } from 'nativewind';
 import Verification from './navigation/log-in-stack/Verification';
 import AfterCreateAcc from './navigation/log-in-stack/AfterCreateAcc';
 import LogIn from "./navigation/log-in-stack/LogIn";
+import ConnectMusicAccount from "./navigation/log-in-stack/ConnectMusicAccount";
 import SignUp from "./navigation/log-in-stack/SignUp";
 import Home from "./navigation/main-stack/Home";
-import ForgotPassword from './navigation/log-in-stack/ForgotPassword';
+import ForgotPassword from "./navigation/log-in-stack/ForgotPassword";
+import LinkAccount from "./navigation/log-in-stack/LinkAccount";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -22,6 +24,8 @@ export default function App() {
     <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="ConnectMusicAccount" component={ConnectMusicAccount} />
+      <Stack.Screen name="LinkAccount" component={LinkAccount} />
       <Stack.Screen name="LogIn" component={LogIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="Verification" component={Verification} />
