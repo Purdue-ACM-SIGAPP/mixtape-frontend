@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, TextInput} from 'react-native'
+import {View, Text, StyleSheet, TextInput, ScrollView, ImageBackground} from 'react-native'
 import Icon from "react-native-vector-icons/Feather";
 import SearchBar from 'react-native-elements/dist/searchbar/SearchBar-ios';
 
@@ -29,12 +29,48 @@ export default function Friends() {
                 <Icon name="search" size={20} color="#C7C6C6" style={styles.smallIcon} />
                 <TextInput
                     placeholder="Search friends..."
+                    placeholderTextColor="#C7C6C6"
                     value={search}
                     onChangeText={(text) => setSearch(text)}
                     style={styles.textInput}
-                    maxLength={10}
                 />
             </View>
+
+            <ScrollView style={styles.scroll}>
+                <View style={styles.rectangularBox}>
+                    <Icon name="user" size={20} color="#C7C6C6" style={[styles.smallIcon, { color: 'white', paddingTop: 10,}]} />
+                </View>
+                <View style={styles.rectangularBox}>
+                    <Icon name="user" size={20} color="#C7C6C6" style={[styles.smallIcon, { color: 'white', paddingTop: 10,}]} />
+                </View>
+                <View style={styles.rectangularBox}>
+                    <Icon name="user" size={20} color="#C7C6C6" style={[styles.smallIcon, { color: 'white', paddingTop: 10,}]} />
+                </View>
+                <View style={styles.rectangularBox}>
+                    <Icon name="user" size={20} color="#C7C6C6" style={[styles.smallIcon, { color: 'white', paddingTop: 10,}]} />
+                </View>
+                <View style={styles.rectangularBox}>
+                    <Icon name="user" size={20} color="#C7C6C6" style={[styles.smallIcon, { color: 'white', paddingTop: 10,}]} />
+                </View>
+                <View style={styles.rectangularBox}>
+                    <Icon name="user" size={20} color="#C7C6C6" style={[styles.smallIcon, { color: 'white', paddingTop: 10,}]} />
+                </View>
+                <View style={styles.rectangularBox}>
+                    <Icon name="user" size={20} color="#C7C6C6" style={[styles.smallIcon, { color: 'white', paddingTop: 10,}]} />
+                </View>
+                <View style={styles.rectangularBox}>
+                    <Icon name="user" size={20} color="#C7C6C6" style={[styles.smallIcon, { color: 'white', paddingTop: 10,}]} />
+                </View>
+                <View style={styles.rectangularBox}>
+                    <Icon name="user" size={20} color="#C7C6C6" style={[styles.smallIcon, { color: 'white', paddingTop: 10,}]} />
+                </View>
+                <View style={styles.rectangularBox}>
+                    <Icon name="user" size={20} color="#C7C6C6" style={[styles.smallIcon, { color: 'white', paddingTop: 10,}]} />
+                </View>
+                <View style={styles.rectangularBox}>
+                    <Icon name="user" size={20} color="#C7C6C6" style={[styles.smallIcon, { color: 'white', paddingTop: 10,}]} />
+                </View>
+            </ScrollView>
         </View>
     )
 }
@@ -44,7 +80,7 @@ const styles = StyleSheet.create({
     icon: {
       marginRight: 10,
       paddingLeft: 5,
-      marginTop: 5,
+      marginTop: 3,
     },
     smallIcon: {
         marginLeft: 10,
@@ -80,12 +116,29 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: "#333333",
         height: 40,
-        width: 300,
+        width: '85%',
         marginTop: 10,
         marginBottom: 10,
+        maxWidth: 500,
         borderColor: "#19A7CE",
         borderWidth: 2.5,
         borderRadius: 7,
-        marginBottom: 500,
-    }
+        //marginBottom: 475,
+    },
+    scroll: {
+        width: '85%',
+        maxWidth: 500,
+        height: 400,
+    },
+    rectangularBox: {
+        width: '100%',
+        height: 50,
+        backgroundColor: '#146C94',
+        borderWidth: 2,
+        //justifyContent: 'center',
+        //alignItems: 'center',
+        borderRadius: 10,
+        padding: 3,
+        marginBottom: 10,
+    },
   });
