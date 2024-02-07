@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Pressable, Text, StyleSheet, Image } from 'react-native';
+import React from "react";
+import { View, Pressable, Text, StyleSheet, Image } from "react-native";
 import { Bar1, Bar2, Bar3, Bar4 } from "./../assets";
 
 const BottomBar = () => {
@@ -26,28 +26,16 @@ const BottomBar = () => {
   return (
     <View style={styles.bottomBar}>
       <Pressable style={styles.tab} onPress={handleBar1Press}>
-        <Image
-          style={styles.image}
-          source={Bar1}
-        />
+        <Image style={styles.image} source={Bar1} />
       </Pressable>
       <Pressable style={styles.tab} onPress={handleBar2Press}>
-        <Image
-          style={styles.image}
-          source={Bar2}
-        />
+        <Image style={styles.image} source={Bar2} />
       </Pressable>
       <Pressable style={styles.tab} onPress={handleBar3Press}>
-        <Image
-          style={styles.image}
-          source={Bar3}
-        />
+        <Image style={styles.image} source={Bar3} />
       </Pressable>
       <Pressable style={styles.tab} onPress={handleBar4Press}>
-        <Image
-          style={styles.image}
-          source={Bar4}
-        />
+        <Image style={styles.image} source={Bar4} />
       </Pressable>
     </View>
   );
@@ -55,25 +43,25 @@ const BottomBar = () => {
 
 const styles = StyleSheet.create({
   bottomBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: 100,
-    width: '100%',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    height: 75,
+    width: "100%",
     borderTopWidth: 2,
-    borderTopColor: '#19A7CE',
-    backgroundColor: 'black',
-    position: 'fixed',
+    borderTopColor: "#19A7CE",
+    backgroundColor: "black",
+    position: "fixed",
     bottom: 0,
   },
   tab: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   image: {
-    width: 40,
-    height: 40,
+    width: "2em",
+    height: "2em",
   },
 });
 

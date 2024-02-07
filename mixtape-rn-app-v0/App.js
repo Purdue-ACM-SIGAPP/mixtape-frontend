@@ -34,12 +34,7 @@ export default function App() {
         <Stack.Screen name="Verification" component={Verification} />
         <Stack.Screen name="AfterCreateAcc" component={AfterCreateAcc} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-        <Stack.Screen name="LogIn" component={LogIn} />
-        <Stack.Screen name="SignUp" component={SignUp} />
         {/* <Stack.Screen name="Verification" component={Verification} /> */}
-        <Stack.Screen name="AfterCreateAcc" component={AfterCreateAcc} />
-        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-        <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
   );
