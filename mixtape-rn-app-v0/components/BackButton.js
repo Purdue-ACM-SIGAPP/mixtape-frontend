@@ -20,16 +20,4 @@ const BackButton = ({ onPress }) => {
   );
 };
 
-// Stylesheet if not using TailwindCSS
-// const styles = StyleSheet.create({
-//   link: {
-//     paddingHorizontal: "20%",
-//   },
-//   textOptions: {
-//     color: "white",
-//     marginTop: 40,
-//     textDecorationLine: "underline",
-//   },
-// });
-
 export default BackButton;
