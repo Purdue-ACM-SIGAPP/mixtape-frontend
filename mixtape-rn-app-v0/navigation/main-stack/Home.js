@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <View>
       <Text>Home Page</Text>
-      <BottomBar></BottomBar>
+      <BottomBar />
     </View>
   );
 }
