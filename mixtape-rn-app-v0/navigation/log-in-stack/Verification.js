@@ -11,35 +11,31 @@ import {
 import Icon from "react-native-vector-icons/Feather";
 import SubmitButton from "../../components/SubmitButton";
 import BackButton from "../../components/BackButton";
-import { TouchableOpacity, Linking } from 'react-native';
+import { TouchableOpacity, Linking } from "react-native";
 
-
-export default function Verification({ navigation }) {
+export default function Verification({ navigation, route }) {
   const [isClicked, setIsClicked] = React.useState(false);
   const [checkValid, setCheckValid] = React.useState(true);
   const [code, setCode] = React.useState("");
 
   const backToLogin = () => {
     return (
-      
       // need to go back to login page
       navigation.goBack()
       //navigation.navigate('SignUp')
       //console.log("pressed back")
-      
     );
-  }
+  };
 
   const tryAgain = () => {
-      // Handle the link press action here
-      Linking.openURL('https://youtube.com');
-      console.log("pressed back");
-    };
+    // Handle the link press action here
+    Linking.openURL("https://youtube.com");
+    console.log("pressed back");
+  };
   const VerificationCode = (code) => {
     navigation.navigate("AfterCreateAcc");
     return false;
   };
-  
 
   return (
     <>
@@ -51,11 +47,11 @@ export default function Verification({ navigation }) {
           backgroundColor: "#14151E",
         }}
       >
-        
         <Text style={styles.ForgotPassword}>Enter Verification Code</Text>
-        <Text style={styles.SubheaderGreen}>Verification sent to XXX-XXX-XXXX</Text>
+        <Text style={styles.SubheaderGreen}>
+          Verification sent to {route.params.phoneNum}
+        </Text>
         <View>
-
           <View style={styles.inputContainer}>
             <Icon name="lock" size={20} color="#C7C6C6" style={styles.icon} />
             <TextInput
@@ -67,20 +63,34 @@ export default function Verification({ navigation }) {
             />
           </View>
           <View>
-            { isClicked && checkValid ? (<Text style={styles.errorText}>Incorrect. Try again.</Text>) : 
-                                        (<Text style={styles.errorText}>&nbsp;</Text>)}
-            </View>
+            {isClicked && checkValid ? (
+              <Text style={styles.errorText}>Incorrect. Try again.</Text>
+            ) : (
+              <Text style={styles.errorText}>&nbsp;</Text>
+            )}
+          </View>
         </View>
         <Text style={styles.Subheader}>
-        Didn't receive it?&nbsp;&nbsp;
-        <Text style={[styles.Subheader, styles.underline]} onPress={tryAgain}>Resend</Text>
+          Didn't receive it?&nbsp;&nbsp;
+          <Text style={[styles.Subheader, styles.underline]} onPress={tryAgain}>
+            Resend
+          </Text>
         </Text>
 
         <View style={styles.addSpacing}></View>
 
-        <SubmitButton initialText="Submit" updatedText="Submit" onPress={() => VerificationCode(code)}/>
-        <BackButton onPress={() => navigation.goBack()}/>
-        <Text style={[styles.SubheaderBottom, styles.underline]} onPress={backToLogin}>Back to Sign Up</Text>
+        <SubmitButton
+          initialText="Submit"
+          updatedText="Submit"
+          onPress={() => VerificationCode(code)}
+        />
+        <BackButton onPress={() => navigation.goBack()} />
+        <Text
+          style={[styles.SubheaderBottom, styles.underline]}
+          onPress={backToLogin}
+        >
+          Back to Sign Up
+        </Text>
       </View>
     </>
   );
@@ -96,14 +106,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   underline: {
-    textDecorationLine: 'underline', 
+    textDecorationLine: "underline",
   },
   textOptions: {
     color: "white",
     marginTop: 10,
     textDecorationLine: "underline",
     justifyContent: "center",
-    
   },
   inputContainer: {
     flexDirection: "row",
@@ -113,7 +122,7 @@ const styles = StyleSheet.create({
     width: 300,
     borderColor: "#19A7CE",
     borderWidth: 2.5,
-    borderRadius: 7,    
+    borderRadius: 7,
   },
   icon: {
     marginRight: 10,
@@ -142,8 +151,8 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   errorText: {
-    display: 'flex',
-    color: 'red',
+    display: "flex",
+    color: "red",
     paddingBottom: 3,
     justifyContent: "center",
   },
