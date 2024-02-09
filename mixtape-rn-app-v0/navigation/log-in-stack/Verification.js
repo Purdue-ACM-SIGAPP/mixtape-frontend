@@ -11,36 +11,35 @@ import {
 import Icon from "react-native-vector-icons/Feather";
 import SubmitButton from "../../components/SubmitButton";
 import BackButton from "../../components/BackButton";
+import { TouchableOpacity, Linking } from 'react-native';
 
-export default function ForgotPassword({ navigation }) {
-  const [phoneNum, setPhoneNum] = React.useState("");
+
+export default function Verification({ navigation }) {
   const [isClicked, setIsClicked] = React.useState(false);
-  const [checkPhone, setCheckPhone] = React.useState(true);
+  const [checkValid, setCheckValid] = React.useState(true);
+  const [code, setCode] = React.useState("");
 
   const backToLogin = () => {
     return (
+      
       // need to go back to login page
-      console.log("pressed back")
+      navigation.goBack()
+      //navigation.navigate('SignUp')
+      //console.log("pressed back")
+      
     );
   }
-  
-  const isValidPhoneNumber = (phoneNumber) => {
-    const phonePattern = /^\d{10}$/;
-    return phonePattern.test(phoneNumber);
+
+  const tryAgain = () => {
+      // Handle the link press action here
+      Linking.openURL('https://youtube.com');
+      console.log("pressed back");
+    };
+  const VerificationCode = (code) => {
+    navigation.navigate("AfterCreateAcc");
+    return false;
   };
   
-  const handleSendVerificationCode = (phoneNumber) => {
-    setIsClicked(true);
-    if (isValidPhoneNumber(phoneNumber)) {
-      console.log("first");
-      setCheckPhone(false);
-    } else {
-      console.log("second");
-      setCheckPhone(true);
-    }
-    console.log(checkPhone);
-    console.log(isClicked);
-  };
 
   return (
     <>
@@ -52,30 +51,36 @@ export default function ForgotPassword({ navigation }) {
           backgroundColor: "#14151E",
         }}
       >
-      <BackButton onPress={() => navigation.goBack()}/>
         
-        <Text style={styles.ForgotPassword}>Reset Password</Text>
+        <Text style={styles.ForgotPassword}>Enter Verification Code</Text>
+        <Text style={styles.SubheaderGreen}>Verification sent to XXX-XXX-XXXX</Text>
         <View>
 
           <View style={styles.inputContainer}>
-            <Icon name="phone" size={20} color="#C7C6C6" style={styles.icon} />
+            <Icon name="lock" size={20} color="#C7C6C6" style={styles.icon} />
             <TextInput
-              placeholder="Phone Number"
-              value={phoneNum}
-              onChangeText={(text) => setPhoneNum(text)}
+              placeholder="Verification Code"
+              value={code}
+              onChangeText={(text) => setCode(text)}
               style={styles.textInput}
               maxLength={10}
             />
           </View>
           <View>
-            { isClicked && checkPhone ? (<Text style={styles.errorText}>Please enter a valid 10-digit phone number.</Text>) : 
+            { isClicked && checkValid ? (<Text style={styles.errorText}>Incorrect. Try again.</Text>) : 
                                         (<Text style={styles.errorText}>&nbsp;</Text>)}
             </View>
         </View>
+        <Text style={styles.Subheader}>
+        Didn't receive it?&nbsp;&nbsp;
+        <Text style={[styles.Subheader, styles.underline]} onPress={tryAgain}>Resend</Text>
+        </Text>
 
         <View style={styles.addSpacing}></View>
 
-        <SubmitButton initialText="Send Text" updatedText="Send Text" onPress={() => handleSendVerificationCode(phoneNum)}/>
+        <SubmitButton initialText="Submit" updatedText="Submit" onPress={() => VerificationCode(code)}/>
+        <BackButton onPress={() => navigation.goBack()}/>
+        <Text style={[styles.SubheaderBottom, styles.underline]} onPress={backToLogin}>Back to Sign Up</Text>
       </View>
     </>
   );
@@ -89,6 +94,9 @@ const styles = StyleSheet.create({
     textAlign: "left",
     color: "#C7C6C6",
     flex: 1,
+  },
+  underline: {
+    textDecorationLine: 'underline', 
   },
   textOptions: {
     color: "white",
@@ -114,7 +122,24 @@ const styles = StyleSheet.create({
   ForgotPassword: {
     color: "white",
     fontSize: 35,
-    marginBottom: 120,
+    marginBottom: 20,
+  },
+  SubheaderGreen: {
+    color: "#60DE83",
+    fontSize: 15,
+    marginBottom: 80,
+  },
+  Subheader: {
+    color: "white",
+    fontSize: 15,
+    marginBottom: 80,
+  },
+  SubheaderBottom: {
+    color: "white",
+    fontSize: 15,
+    marginBottom: 40,
+    position: "absolute",
+    bottom: 0,
   },
   errorText: {
     display: 'flex',

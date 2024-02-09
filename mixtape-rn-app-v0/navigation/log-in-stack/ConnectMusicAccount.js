@@ -11,9 +11,10 @@ import Icon from "react-native-vector-icons/Feather";
 import SubmitButton from "../../components/SubmitButton";
 import Link from "../../components/Link";
 
-export default function LogIn({ navigation }) {
-  const [phoneNum, setPhoneNum] = React.useState("");
+export default function ConnectSpotify({ navigation }) {
+  const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [platform, setPlatform] = React.useState("spotify");
 
   const LogInPressed = () => {
     if (isValidPhoneNumber(phoneNum)) {
@@ -23,15 +24,7 @@ export default function LogIn({ navigation }) {
       console.log("Please enter a valid 10-digit phone number.");
     }
   };
-  const forgotPasswordPressed = () => {
-    console.log("Forgot Password pressed");
-    navigation.navigate("ForgotPassword");
-  };
 
-  const createAccountPressed = () => {
-    console.log("Create Account pressed");
-    navigation.navigate("SignUp");
-  };
   const isValidPhoneNumber = (phoneNumber) => {
     const phonePattern = /^\d{10}$/;
     return phonePattern.test(phoneNumber);
@@ -39,19 +32,43 @@ export default function LogIn({ navigation }) {
 
   return (
     <View style={styles.page}>
-      <Image
-        style={styles.mixtapeLogo}
-        source={{
-          uri: "https://i.ibb.co/5xqB3BV/mixtape.png",
-        }}
-      />
 
+    { platform.toLowerCase() == "spotify" ? (
+        <> 
+        <View>
+            <Image
+                style={styles.platformImg}
+                source={
+                  require('../../assets/spotify.png')
+                }
+            />
+        </View>
+        <View>
+            <Text style={styles.loginText}>
+                Login to your Spotify Account
+            </Text>
+        </View>
+        </>
+
+        ) : (
+            <> 
+                <Image
+                    style={styles.platformImg}
+                    source={
+                      require('../../assets/applemusic.png')
+                    }
+                />
+                <Text style={styles.loginText}>
+                    Login to your Apple Music Account
+                </Text>
+            </>
+        )}
       <View style={styles.inputContainer}>
-        <Icon name="phone" size={20} color="#C7C6C6" style={styles.icon} />
+        <Icon name="user" size={20} color="#C7C6C6" style={styles.icon} />
         <TextInput
-          placeholder={"Phone Number"}
-          value={phoneNum}
-          onChangeText={(text) => setPhoneNum(text)}
+          placeholder={"Username"}
+          value={username}
+          onChangeText={(text) => setUsername(text)}
           style={styles.textInput}
         />
       </View>
@@ -72,17 +89,6 @@ export default function LogIn({ navigation }) {
         updatedText="Log In"
         onPress={() => LogInPressed()}
       />
-
-      <View style={styles.LinkHolder}>
-        <Link
-          linkText="Forgot Password?"
-          onPress={() => forgotPasswordPressed()}
-        />
-        <Link
-          linkText="Create Account"
-          onPress={() => createAccountPressed()}
-        />
-      </View>
     </View>
   );
 }
@@ -103,11 +109,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   loginText: {
-    fontSize: 16,
+    fontSize: 24,
     lineHeight: 21,
-    fontWeight: "bold",
     letterSpacing: 0.25,
     color: "white",
+    marginBottom: 40,
+    lineHeight: 30,
+    maxWidth: 300,
+    textAlign: "center",
   },
   textInput: {
     height: 30,
@@ -117,9 +126,8 @@ const styles = StyleSheet.create({
     color: "#C7C6C6",
     flex: 1,
   },
-
-  mixtapeLogo: {
-    width: "250px",
+  platformImg: {
+    width: "150px",
     height: "150px",
     marginBottom: 20,
   },
@@ -129,8 +137,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#333333",
     height: 40,
     width: 300,
-    marginTop: 20,
-    marginBottom: 20,
+    marginBottom: 40,
     borderColor: "#19A7CE",
     borderWidth: 2.5,
   },
