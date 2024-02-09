@@ -2,16 +2,19 @@ import * as React from "react";
 import { View, Text, StyleSheet, Linking } from "react-native";
 import { dancing_meme } from "../../assets";
 import SubmitButton from "../../components/SubmitButton";
+import BackButton from "../../components/BackButton";
 import { Dimensions } from "react-native";
 import { useEffect, useState } from "react";
 
-export default function AfterCreateAcc() {
+export default function AfterCreateAcc({ navigation }) {
   const [screenWidth, setScreenWidth] = useState(
     Dimensions.get("window").width
   );
 
   const ContinueToLinkAccount = () => {
+    console.log("Continue to link account");
     navigation.navigate("LinkAccount");
+    return false;
   };
 
   useEffect(() => {
@@ -26,25 +29,26 @@ export default function AfterCreateAcc() {
     };
   }, []);
   return (
-    <View style={styles.container}>
-      <View style={styles.leftcontainer}>
-        <Text style={styles.HeaderText}> The party is almost ready!</Text>
-        <Text style={styles.SubHeader}>
-          {" "}
-          Next, connect your account with a music streaming service.
-        </Text>
-        <img src={dancing_meme} style={styles.DImage} />
-        <Text style={styles.Description}>
-          {" "}
-          It has been shown that memes make Generation Z demographic laugh.
-        </Text>
-        <SubmitButton
-          initialText={"Next"}
-          updatedText="Next"
-          onPress={() => ContinueToLinkAccount()}
-        />
+    <>
+      <View style={styles.container}>
+        <View style={styles.leftcontainer}>
+          <Text style={styles.HeaderText}> The party is almost ready!</Text>
+          <Text style={styles.SubHeader}>
+            Next, connect your account with a music streaming service.
+          </Text>
+          <img src={dancing_meme} style={styles.DImage} />
+          <Text style={styles.Description}>
+            It has been shown that memes make Generation Z demographic laugh.
+          </Text>
+          <SubmitButton
+            initialText="Next"
+            updatedText="Next"
+            onPress={() => ContinueToLinkAccount()}
+          />
+          <BackButton onPress={() => navigation.goBack()} />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
