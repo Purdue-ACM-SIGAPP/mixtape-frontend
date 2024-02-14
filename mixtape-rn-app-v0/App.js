@@ -12,7 +12,6 @@ import SignUp from "./navigation/log-in-stack/SignUp";
 import Home from "./navigation/main-stack/Home";
 import ForgotPassword from './navigation/log-in-stack/ForgotPassword';
 import Friends from './navigation/main-stack/Friends';
-import ForgotPassword from "./navigation/log-in-stack/ForgotPassword";
 import LinkAccount from "./navigation/log-in-stack/LinkAccount";
 
 NativeWindStyleSheet.setOutput({
@@ -25,18 +24,15 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Friends" component={Friends} />
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen
-          name="ConnectMusicAccount"
-          component={ConnectMusicAccount}
-        />
+        <Stack.Screen name="ConnectMusicAccount" component={ConnectMusicAccount} />
         <Stack.Screen name="LinkAccount" component={LinkAccount} />
         <Stack.Screen name="LogIn" component={LogIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Verification" component={Verification} />
         <Stack.Screen name="AfterCreateAcc" component={AfterCreateAcc} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-        {/* <Stack.Screen name="Verification" component={Verification} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
