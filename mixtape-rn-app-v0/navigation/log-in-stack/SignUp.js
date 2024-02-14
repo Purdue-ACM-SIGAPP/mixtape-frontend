@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import BackButton from "../../components/BackButton";
 
 export default function SignUp({ navigation }) {
@@ -23,14 +23,14 @@ export default function SignUp({ navigation }) {
   const [checkPhone, setCheckPhone] = React.useState(false);
   const [checkUsernameBlank, setCheckUsernameBlank] = React.useState(false);
   const [checkPasswordBlank, setCheckPasswordBlank] = React.useState(false);
-  
-  const toggleShowPassword = () => { 
-    setShowPassword(!showPassword); 
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
-  const toggleShowConfirmPassword = () => { 
-    setShowConfirmPassword(!showConfirmPassword); 
-  }; 
+  const toggleShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
   const isValidPhoneNumber = (phoneNumber) => {
     const phonePattern = /^\d{10}$/;
@@ -38,7 +38,8 @@ export default function SignUp({ navigation }) {
   };
 
   const isValidPassword = (password) => {
-    const phonePattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const phonePattern =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return phonePattern.test(password);
   };
 
@@ -46,14 +47,12 @@ export default function SignUp({ navigation }) {
     setIsClicked(true);
     if (username == "") {
       setCheckUsernameBlank(true);
-    }
-    else {
+    } else {
       setCheckUsernameBlank(false);
     }
     if (!isValidPassword(password)) {
       setCheckPasswordBlank(true);
-    }
-    else {
+    } else {
       setCheckPasswordBlank(false);
     }
     if (isValidPhoneNumber(phoneNum)) {
@@ -63,11 +62,12 @@ export default function SignUp({ navigation }) {
     }
     if (password != confirmPassword) {
       setCheckPassword(true);
-    }
-    else {
+    } else {
       setCheckPassword(false);
     }
-    navigation.navigate("Verification");
+    navigation.navigate("Verification", {
+      phoneNum: phoneNum,
+    });
   };
 
   return (
@@ -80,10 +80,8 @@ export default function SignUp({ navigation }) {
           backgroundColor: "#14151E",
         }}
       >
-      <BackButton onPress={() => navigation.goBack()}/>
-        <Text style={styles.signUpHeader}>
-          Sign Up
-        </Text>
+        <BackButton onPress={() => navigation.goBack()} />
+        <Text style={styles.signUpHeader}>Sign Up</Text>
 
         <View style={styles.inputContainer}>
           <Icon name="phone" size={20} color="#C7C6C6" style={styles.icon} />
@@ -96,7 +94,9 @@ export default function SignUp({ navigation }) {
           />
         </View>
         {isClicked && checkPhone && (
-          <Text style={styles.errorText}>Please enter a valid 10-digit phone number.</Text>
+          <Text style={styles.errorText}>
+            Please enter a valid 10-digit phone number.
+          </Text>
         )}
 
         <View style={styles.inputContainer}>
@@ -120,22 +120,41 @@ export default function SignUp({ navigation }) {
             onChangeText={(text) => setPassword(text)}
             style={styles.textInput}
             secureTextEntry={!showPassword}
-            
           />
           {!showPassword && (
-            <Icon name="eye" size={20} color="#C7C6C6" style={styles.icon} onPress={toggleShowPassword}/>
+            <Icon
+              name="eye"
+              size={20}
+              color="#C7C6C6"
+              style={styles.icon}
+              onPress={toggleShowPassword}
+            />
           )}
           {showPassword && (
-            <Icon name="eye-off" size={20} color="#C7C6C6" style={styles.icon} onPress={toggleShowPassword}/>
+            <Icon
+              name="eye-off"
+              size={20}
+              color="#C7C6C6"
+              style={styles.icon}
+              onPress={toggleShowPassword}
+            />
           )}
-          
         </View>
         {isClicked && checkPasswordBlank && (
-          <Text style={styles.errorText}>Your password should a contain min of 8 characters, at least one uppercase and lowecase letter, one number, and one special character.</Text>
+          <Text style={styles.errorText}>
+            Your password should a contain min of 8 characters, at least one
+            uppercase and lowecase letter, one number, and one special
+            character.
+          </Text>
         )}
 
         <View style={styles.inputContainer}>
-          <MaterialCommunityIcons name="lock-check-outline" size={22} color="#C7C6C6" style={styles.icon}/>
+          <MaterialCommunityIcons
+            name="lock-check-outline"
+            size={22}
+            color="#C7C6C6"
+            style={styles.icon}
+          />
           <TextInput
             placeholder="Confirm Password"
             value={confirmPassword}
@@ -145,17 +164,32 @@ export default function SignUp({ navigation }) {
             selectionColor={"#000000"}
           />
           {!showConfirmPassword && (
-            <Icon name="eye" size={20} color="#C7C6C6" style={styles.icon} onPress={toggleShowConfirmPassword}/>
+            <Icon
+              name="eye"
+              size={20}
+              color="#C7C6C6"
+              style={styles.icon}
+              onPress={toggleShowConfirmPassword}
+            />
           )}
           {showConfirmPassword && (
-            <Icon name="eye-off" size={20} color="#C7C6C6" style={styles.icon} onPress={toggleShowConfirmPassword}/>
+            <Icon
+              name="eye-off"
+              size={20}
+              color="#C7C6C6"
+              style={styles.icon}
+              onPress={toggleShowConfirmPassword}
+            />
           )}
         </View>
         {isClicked && checkPassword && (
           <Text style={styles.errorText}>Passwords must be the same</Text>
         )}
 
-        <Pressable style={styles.loginButton} onPress={handleSendVerificationCode}>
+        <Pressable
+          style={styles.loginButton}
+          onPress={handleSendVerificationCode}
+        >
           <Text style={styles.loginText}>Send Verification Code</Text>
         </Pressable>
       </View>
@@ -215,7 +249,7 @@ const styles = StyleSheet.create({
     color: "#C7C6C6",
   },
   errorText: {
-    color: 'red',
+    color: "red",
     paddingBottom: 3,
     width: 300,
   },
