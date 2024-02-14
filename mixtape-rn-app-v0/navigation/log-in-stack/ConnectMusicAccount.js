@@ -11,10 +11,9 @@ import Icon from "react-native-vector-icons/Feather";
 import SubmitButton from "../../components/SubmitButton";
 import Link from "../../components/Link";
 
-export default function ConnectSpotify({ navigation }) {
+export default function ConnectSpotify({ navigation, route }) {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [platform, setPlatform] = React.useState("spotify");
 
   const LogInPressed = () => {
     if (isValidPhoneNumber(phoneNum)) {
@@ -32,37 +31,29 @@ export default function ConnectSpotify({ navigation }) {
 
   return (
     <View style={styles.page}>
-
-    { platform.toLowerCase() == "spotify" ? (
-        <> 
-        <View>
+      {route.params.platform.toLowerCase() == "spotify" ? (
+        <>
+          <View>
             <Image
-                style={styles.platformImg}
-                source={
-                  require('../../assets/spotify.png')
-                }
+              style={styles.platformImg}
+              source={require("../../assets/spotify.svg")}
             />
-        </View>
-        <View>
-            <Text style={styles.loginText}>
-                Login to your Spotify Account
-            </Text>
-        </View>
+          </View>
+          <View>
+            <Text style={styles.loginText}>Login to your Spotify Account</Text>
+          </View>
         </>
-
-        ) : (
-            <> 
-                <Image
-                    style={styles.platformImg}
-                    source={
-                      require('../../assets/applemusic.png')
-                    }
-                />
-                <Text style={styles.loginText}>
-                    Login to your Apple Music Account
-                </Text>
-            </>
-        )}
+      ) : (
+        <>
+          <Image
+            style={styles.platformImg}
+            source={require("../../assets/applemusic.svg")}
+          />
+          <Text style={styles.loginText}>
+            Login to your Apple Music Account
+          </Text>
+        </>
+      )}
       <View style={styles.inputContainer}>
         <Icon name="user" size={20} color="#C7C6C6" style={styles.icon} />
         <TextInput
