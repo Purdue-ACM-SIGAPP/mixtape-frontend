@@ -6,29 +6,20 @@ import {
   Text,
   TextInput,
   View,
+  Linking,
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import SubmitButton from "../../components/SubmitButton";
-import Link from "../../components/Link";
 
 export default function ConnectSpotify({ navigation, route }) {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const LogInPressed = () => {
-    if (isValidPhoneNumber(phoneNum)) {
-      console.log("Log In pressed");
-      navigation.navigate("Home");
-    } else {
-      console.log("Please enter a valid 10-digit phone number.");
-    }
+  const ContinueToHome = () => {
+    console.log("Continue to home page");
+    navigation.navigate("Home");
+    return false;
   };
-
-  const isValidPhoneNumber = (phoneNumber) => {
-    const phonePattern = /^\d{10}$/;
-    return phonePattern.test(phoneNumber);
-  };
-
   return (
     <View style={styles.page}>
       {route.params.platform.toLowerCase() == "spotify" ? (
@@ -78,7 +69,9 @@ export default function ConnectSpotify({ navigation, route }) {
       <SubmitButton
         initialText={"Log In"}
         updatedText="Log In"
-        onPress={() => LogInPressed()}
+        onPress={() => {
+          ContinueToHome();
+        }}
       />
     </View>
   );
