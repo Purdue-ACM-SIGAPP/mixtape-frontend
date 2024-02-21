@@ -15,17 +15,14 @@ export const AddFriendButton = ({ onPress, imageText }) => {
   return (
     <Pressable onPress={handlePress}>
       <View
-        className={`flex flex-row ${colorStyle} py-[3px] px-[80px] rounded-[16px]`}
+        className={`flex flex-row justify-end ${colorStyle} py-[3px] rounded-[16px]`}
       >
-        <Image
-          className="flex r-30 h-[28px] w-[28px] mt-2 right-[60px]"
-          source={userIcon}
-        />
-        <Text className="flex mt-2 text-ivory right-[40px] top-[1px] text-[16px]">
+        <Image className="flex h-[28px] w-[28px] mt-2 ml-2" source={userIcon} />
+        <Text className="flex-grow mt-2 ml-4 text-ivory text-[16px]">
           {imageText}
         </Text>
         <Image
-          className="flex r-30 h-[24px] w-[24px] top-[6px] left-[60px]"
+          className="flex h-[24px] w-[24px] top-[6px] mr-2 "
           source={addFriend ? checkIcon : plusIcon}
         />
       </View>
